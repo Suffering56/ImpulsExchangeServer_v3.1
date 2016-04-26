@@ -305,10 +305,12 @@ public class FrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_mainDownloadBtnActionPerformed
 
     private void updateInterface() {
+        boolean globalUpdateStatus = false;
         for (int i = 0; i < progressBarArray.length; i++) {
             boolean isUpdate = false;
             if (!newOrdersList.get(i).getOrdersList().isEmpty()) {
                 isUpdate = true;
+                globalUpdateStatus = true;
             }
             if (isUpdate) {
                 progressBarArray[i].setValue(100);
@@ -321,6 +323,9 @@ public class FrameMain extends javax.swing.JFrame {
 
             }
             doExchangeBtnArray[i].setSelected(false);
+        }
+        if (globalUpdateStatus) {
+            startNotification();
         }
     }
 
